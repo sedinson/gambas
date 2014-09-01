@@ -71,6 +71,23 @@ var _tools = {
                 visible     : true
             }
         }
+    }, checkbox: {
+        icon            : 'res/icons/checkbox.png',
+        text            : 'CheckBox',
+        description     : 'Create a simple CheckBox.',
+        counter         : 1,
+        properties: {
+            _id             : 0,
+            _type           : 'checkbox',
+            _accept         : 'any',
+            label           : 'Check',
+            default         : false,
+            length          : 255,
+            required        : false,
+            advanced: {
+                visible     : true
+            }
+        }
     }, date: {
         icon            : 'res/icons/datebox.png',
         text            : 'Date',
