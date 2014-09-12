@@ -6,9 +6,110 @@
 
 /*Elementos que agregables al editor*/
 var _tools = {
-    text: {
+    file: {
+        icon            : 'res/icons/file.png',
+        text            : ' File',
+        description     : 'Create a simple Upload File.',
+        counter         : 1,
+        properties: {
+            _id             : 0,
+            _type           : 'file',
+            _accept         : 'any',
+            accept          : [
+                {
+                    value   : "any",
+                    key     : "Any"
+                }
+            ],
+            label           : 'Upload File',
+            default         : 'false',
+            length          : 255,
+            required        : false,
+            advanced: {
+                visible     : true
+            }
+        }
+    }, checkbox: {
+        icon            : 'res/icons/radio_button.png',
+        text            : ' Checkbox',
+        description     : 'Create a simple Checkbox.',
+        counter         : 1,
+        properties: {
+            _id             : 0,
+            _type           : 'radio',
+            _accept         : 'boolean',
+            accept          : [
+                {
+                    value   : "boolean",
+                    key     : "boolean"
+                }
+            ],
+            label           : 'Radio Button',
+            default         : 'false',
+            length          : 255,
+            required        : false,
+            advanced: {
+                visible     : true
+            }
+        }
+    }, radiobutton: {
+        icon            : 'res/icons/radio_button.png',
+        text            : ' Radio Button',
+        description     : 'Create a simple Radio Button.',
+        counter         : 1,
+        properties: {
+            _id             : 0,
+            _type           : 'radio',
+            _accept         : 'boolean',
+            accept          : [
+                {
+                    value   : "boolean",
+                    key     : "boolean"
+                }
+            ],
+            label           : 'Radio Button',
+            default         : 'false',
+            length          : 255,
+            required        : false,
+            advanced: {
+                visible     : true
+            }
+        }
+    }, textarea: {
+        icon            : 'res/icons/textarea.png',
+        text            : ' Textarea',
+        description     : 'Create a simple Textarea.',
+        counter         : 1,
+        properties: {
+            _id             : 0,
+            _type           : 'textarea',
+            _accept         : 'any',
+            accept          : [
+                {
+                    value   : "any",
+                    key     : "Any text"
+                }, {
+                    value   : "alphanumeric",
+                    key     : "Letters and numbers"
+                }, {
+                    value   : "uppercase",
+                    key     : "Only Uppercase"
+                }, {
+                    value   : "lowercase",
+                    key     : "Only lowercase"
+                }
+            ],
+            label           : 'Textarea',
+            default         : '',
+            length          : 255,
+            required        : false,
+            advanced: {
+                visible     : true
+            }
+        }
+    }, text: {
         icon            : 'res/icons/textbox.png',
-        text            : 'Text',
+        text            : ' Text',
         description     : 'Create a simple TextBox.',
         counter         : 1,
         properties: {
@@ -40,7 +141,7 @@ var _tools = {
         }
     }, number: {
         icon            : 'res/icons/numberbox.png',
-        text            : 'Number',
+        text            : ' Number',
         description     : 'Create a Number TextBox. Accept: Decimals, Integers, Reals.',
         counter         : 1,
         properties: {
@@ -73,7 +174,7 @@ var _tools = {
         }
     }, checkbox: {
         icon            : 'res/icons/checkbox.png',
-        text            : 'CheckBox',
+        text            : ' CheckBox',
         description     : 'Create a simple CheckBox.',
         counter         : 1,
         properties: {
@@ -90,7 +191,7 @@ var _tools = {
         }
     }, date: {
         icon            : 'res/icons/datebox.png',
-        text            : 'Date',
+        text            : ' Date',
         description     : 'A simple DatePicker.',
         counter         : 1,
         properties: {
@@ -121,7 +222,7 @@ var _tools = {
         }
     }, list: {
         icon            : 'res/icons/textbox.png',
-        text            : 'List',
+        text            : ' List',
         description     : 'List of elements.',
         counter         : 1,
         properties: {
@@ -136,7 +237,7 @@ var _tools = {
         }
     }, label: {
         icon            : 'res/icons/textbox.png',
-        text            : 'Label',
+        text            : ' Label',
         description     : 'A simple label',
         counter         : 1,
         properties: {
@@ -151,7 +252,7 @@ var _tools = {
         }
     }, gps: {
         icon            : 'res/icons/gps.png',
-        text            : 'GPS',
+        text            : ' GPS',
         description     : 'Geolocalization System.',
         counter         : 1,
         properties: {
@@ -175,7 +276,7 @@ var _tools = {
         }
     }, barcode: {
         icon            : 'res/icons/barcode.png',
-        text            : 'Barcode',
+        text            : ' Barcode',
         description     : 'Barcode Scanner',
         counter         : 1,
         properties: {
@@ -189,7 +290,7 @@ var _tools = {
         }
     }, camera: {
         icon            : 'res/icons/camera.png',
-        text            : 'Camera',
+        text            : ' Camera',
         description     : 'Camera Picture',
         counter         : 1,
         properties: {
@@ -203,7 +304,7 @@ var _tools = {
         }
     }, signature: {
         icon            : 'res/icons/signature.png',
-        text            : 'Signature',
+        text            : ' Signature',
         description     : 'Signature',
         counter         : 1,
         properties: {
@@ -565,6 +666,11 @@ $(function () {
                     break;
                 case "label":
                     element = $("<label/>", {
+                        name: comp.label
+                    }).html(comp.default);
+
+                case "textarea":
+                    element = $("<textarea/>", {
                         name: comp.label
                     }).html(comp.default);
             }

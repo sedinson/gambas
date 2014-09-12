@@ -67,6 +67,13 @@
                 }
             });
         });
+
+        $('#pass').keypress(function(e){
+            if(e.which == 13) {
+                login();
+                console.log('You pressed enter!');
+            }
+        });
         
         function login () {
             uget({

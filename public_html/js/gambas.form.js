@@ -47,7 +47,9 @@ var Forms = {
                     $("<td/>", {
                         class: 'i_type'
                     }).html(
-                        $("<select/>").append(
+                        $("<select/>",{
+                            class: "form-control"
+                        }).append(
                             $("<option/>", {
                                 text: ob.status,
                                 value: ob.status
@@ -90,48 +92,59 @@ var Forms = {
                     $("<td/>", {
                         class: 'i_arch',
                         html: ob.consecutivo
+                    }).css({
+                        'text-align': 'right'
                     }).appendTo(tr);
                     
                     $("<td/>", {
                         class: 'i_arch',
                         html: ob.creation
+                    }).css({
+                        'text-align': 'center'
                     }).appendTo(tr);
 
-                    $("<td/>", {
+                    var tr_temp = $("<td/>", {
                         class: 'i_status'
                     }).css({
                         'text-align': 'center'
-                    }).html(
-                        $("<span/>", {
-                            class: 'st-16 icon-edit'
-                        }).click(function () {
-                            R.edit_form(ob);
-                        })
-                    ).appendTo(tr);
-            
-                    $("<td/>", {
-                        class: 'i_status'
-                    }).css({
-                        'text-align': 'center'
-                    }).html(
-                        $("<span/>", {
-                            class: 'st-16 icon-eye-open'
-                        }).click(function () {
-                            Forms.get(ob.idform);
-                        })
-                    ).appendTo(tr);
+                    });
 
-                    $("<td/>", {
-                        class: 'i_launch'
-                    }).css({
-                        'text-align': 'center'
+                    var div = $("<div/>", {
+                        class: 'btn-group'
+                    });
+
+                    $("<span/>", {
+                        class: 'btn btn-success'
                     }).html(
-                        $("<span/>", {
-                            class: 'st-48 icon-remove'
-                        }).click(function () {
-                            Forms.delete(ob.idform);
+                        $("<i/>", {
+                            class: 'glyphicon glyphicon-edit'
                         })
-                    ).appendTo(tr);
+                    ).click(function () {
+                        R.edit_form(ob);
+                    }).appendTo(div);
+
+                    $("<span/>", {
+                        class: 'btn btn-success'
+                    }).html(
+                        $("<i/>", {
+                            class: 'glyphicon glyphicon-eye-open'
+                        })
+                    ).click(function () {
+                        Forms.get(ob.idform);
+                    }).appendTo(div);
+
+                    $("<span/>", {
+                        class: 'btn btn-danger'
+                    }).html(
+                        $("<i/>", {
+                            class: 'glyphicon glyphicon-trash'
+                        })
+                    ).click(function () {
+                        Forms.delete(ob.idform);
+                    }).appendTo(div);
+
+                    div.appendTo(tr_temp);
+                    tr_temp.appendTo(tr);
 
                     tr.appendTo(table);
                     
